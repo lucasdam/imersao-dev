@@ -5,28 +5,23 @@
 }
 
 body {
-    font-family: "Roboto Mono", monospace;
-    min-height: 600px;
-    background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-03-mentalista.png");
-    background-color: #000000;
-    background-size: cover;
-    background-position: center bottom;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #121214;
+    background-image: url('https://wallpapercave.com/wp/wp5898128.jpg');
     background-repeat: no-repeat;
-  }
+    background-size: cover;
+    height: 95.5vh;
+    color: #FFFFFF;
+}
 
 header {
     color: white;
     text-align: center;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 .page-title {
     font-size: 3rem;
-}
-
-.page-logo {
-    width: 200px;
-    margin-bottom: 2rem;
 }
 
 .page-subtitle {
@@ -42,35 +37,55 @@ header {
 
 .container {
     text-align: center;
-    height: 100vh;
-    color: #FFFFFF;
-  }
+    padding: 3rem 0 0 0;
+    background: #12121470;
+    width: 40rem;
+    margin: 2rem auto 0 ;
+    border: 1px solid #CCC;
+}
 
 input {
     width: 5rem;
     padding: 6px;
     border-radius: 5px;
+    margin: 0.5rem 0;
+    outline: 0;
 }
 
 button {
     margin-top: 2rem;
-    padding: 0.75rem 0rem;
-    width: 10rem;
+    padding: 0.75rem 3rem;
     border-radius: 0.25rem;
     background: #4CAF50;
     color: #FFFFFF;
     cursor: pointer;
     font-weight: bold;
     border: none;
+    letter-spacing: 0.3rem;
 }
 
 button:hover {
     opacity: 0.9;
 }
 
+.restart-button {
+    background: rgb(241, 68, 68);
+}
+
+.disable-button {
+    display: none;
+}
+
 #result-value {
-    font-size: 30px;
-    margin: 2rem 0;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #000;
+    font-size: 1.5rem;
+    margin: 3rem 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.page-logo {
+    width: 200px;
 }

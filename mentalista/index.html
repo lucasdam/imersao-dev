@@ -15,21 +15,26 @@
         <a href="https://alura.com.br/" target="_blank">
             <img class="alura-logo" src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="Logo Alura">
         </a>
+
+        <h2 class="page-subtitle">Tente adivinhar o número sorteado</h2>
     </header>
 
     <section class="container">
+        <label for="input-value">Digite um número de 0 a 10</label> <br>
+        <input type="number" id="input-value" placeholder="0"> <br>
 
-        <img class="page-logo" src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-mentalista.svg" alt="Logo Imersão Dev"> <br>
+        <p id="tries-value">Tentativas restantes: 3</p>
 
-        <h2 class="page-subtitle">Digite um número de 0 a 10</h2> <br>
-        <input type="number" id="input-value" placeholder="0"> <br> <br>
+        <button id="guess-button" type="submit" onclick="toGuess()">CHUTAR</button>
 
-        <p id="tries-value">Número de tentativas: 3</p>
+        <button class="restart-button disable-button" id="restart-button" type="submit" onclick="restart()">REINICIAR</button>
 
-        <button type="submit" onclick="toGuess()">Chutar</button>
-
-        <h2 id="result-value"></h2>
+        <h2 id="result-value"></h2> <br>
     </section>
+
+    <footer>
+        <img class="page-logo" src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-mentalista.svg" alt="Logo Imersão Dev"> <br>
+    </footer>
 
     <script src="main.js"></script>
 
