@@ -6,6 +6,7 @@ Os desafios estão hospedados no GitHub Pages.
 <br /> <br />
 
 ### 💻 Projetos:
+- <a href="https://lucasdam.github.io/imersao-dev/aluraflix/">AluraFlix</a>
 - <a href="https://lucasdam.github.io/imersao-dev/mentalista/">Mentalista</a>
 - <a href="https://lucasdam.github.io/imersao-dev/conversor-de-moedas/">Conversor de Moedas</a>
 - <a href="https://lucasdam.github.io/imersao-dev/conversor-estelar/">Conversor de KM para Anos Luz</a>
