@@ -4,6 +4,10 @@ const initialMovies = [
     'https://br.web.img3.acsta.net/medias/nmedia/18/91/90/98/20169244.jpg',
 ]
 
+let newMovie = ''
+let moviePoster = ''
+let listMovies = document.getElementById('list-movies')
+
 const localStorageMovies = JSON.parse(localStorage.getItem('aluraflix'))
 let movies = localStorage.getItem('aluraflix') !== null ? localStorageMovies : initialMovies
 
@@ -11,21 +15,23 @@ const updateLocalStorage = () => {
     localStorage.setItem('aluraflix', JSON.stringify(movies))
 }
 
-let listMovies = document.getElementById('list-movies')
-
 for (let movie of movies) {
     listMovies.innerHTML += `<img src="${movie}">`
 }
 
-function addMovie() {
 
-    let newMovie = document.getElementById('input-movie').value
-    let hasMovie = movies.includes(newMovie)
+async function addMovie() {
+
+    newMovie = document.getElementById('input-movie').value
+
+    await getMovieInfos()
+
+    let hasMovie = movies.includes(moviePoster)
     
     if (!hasMovie) {
-        movies.push(newMovie)
+        movies.push(moviePoster)
         updateLocalStorage()
-        listMovies.innerHTML += `<img src="${newMovie}">`
+        listMovies.innerHTML += `<img src="${moviePoster}">`
     } else {
         alert('Essa capa já foi adicionada. Tente outra!')
     }
@@ -33,21 +39,41 @@ function addMovie() {
     document.getElementById('input-movie').value = ''
     document.getElementById('input-movie').focus()
 
-    console.log(movies)
+}
+
+
+async function getMovieInfos() {
+
+    let movieFormated = newMovie.replaceAll(' ', '%20')
+
+    await fetch(`https://imdb-data-searching.p.rapidapi.com/om?t=${movieFormated}`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "imdb-data-searching.p.rapidapi.com",
+		"x-rapidapi-key": "6b049fd902msh11b57c5ebb6ac4bp190938jsn2e0d04b84102"
+	}
+    })
+    .then(response => response.json())
+    .then(data => {
+        moviePoster = data.Poster
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 }
 
 
 
-/* 
+/*
 
-https://uauposters.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/6/160520140525-uau-posters-filmes-ela--her--2.jpg
+TAREFAS:
 
-https://i.pinimg.com/originals/75/b4/9e/75b49ec4073b178e9bfc75308a763e5b.jpg
+1. Abaixo do poster, apresentar o nome do filme e ano de lançamento, gênero e sinopse
+2. Usar outra API que permita fazer a busca do filme pelo título em português também, não só inglês
+3. Se possível (dependendo da API), fazer com que ao clicar no poster, o usuário seja direcionado a página do IMDB
+4. Realmente trocar essa API pois ela só deixa fazer 50 requisições por mês
 
-https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg
-
-https://upload.wikimedia.org/wikipedia/pt/8/87/The-evil-dead-original-1981-poster.jpg
-
+oldkey: 524ef02908msh7bf0426979dca94p1b3e94jsn80282e9d9859
 
 */
