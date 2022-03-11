@@ -87,8 +87,4 @@ function showMovies(movie) {
 
 }
 
-/* TAREFAS
-1. [ ] Adicionar nome do filme e ano de lançamento abaixo do poster
-2. [ ] Quebrar o nome do filme caso ele seja muito grande
-3. [ ] Ao clicar no poster, ser direcionado para a página do filme no site da IMDB
-4. [ ] Criar botão para remover o filme */
+/* TAREFA: [ ] Criar botão para remover o filme */

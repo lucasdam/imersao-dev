@@ -72,18 +72,34 @@ button:hover {
   flex-wrap: wrap;
 }
 
-#list-movies > img {
-  margin: 0 10px 8px;
+#movie-content {
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  margin: 0 1rem 2rem;
+  
+  
+  max-height: 322px;
+  max-width: 160px;
 }
 
-#movie-content {
-  margin-right: 1rem;
+#movie-content:hover {
+  -webkit-transform: scale(1.05);
+   transform: scale(1.05);
 }
 
 #movie-content h3, h4 {
   margin: 0px;
 }
 
+#movie-content h3 {
+  font-size: 1rem;
+}
+
+#movie-content h4 {
+  font-size: 0.75rem;
+}
+
 img {
   max-height: 250px;
+  max-width: 160px;
 }
