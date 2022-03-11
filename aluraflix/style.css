@@ -64,8 +64,24 @@ button:hover {
   opacity: 0.9;
 }
 
-body > #list-movies > img {
+#list-movies {
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#list-movies > img {
   margin: 0 10px 8px;
+}
+
+#movie-content {
+  margin-right: 1rem;
+}
+
+#movie-content h3, h4 {
+  margin: 0px;
 }
 
 img {

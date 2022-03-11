@@ -8,16 +8,24 @@ const updateLocalStorage = () => {
 let listMovies = document.getElementById('list-movies')
 
 for (let movie of movies) {
-    listMovies.innerHTML += `<img src="${movie}">`
+    listMovies.innerHTML += `
+        <div id="movie-content">
+            <a href="https://www.imdb.com/title/${movie.id}" target="_blank">
+                <img src="${movie.poster}">
+            </a>
+            <h3>${movie.title}</h3>
+            <h4>${movie.year}</h4>
+        </div>
+    `
 }
 
 
 function addMovie() {
 
     let newMovie = document.getElementById('input-movie').value
-    let formatedMovie = newMovie.replaceAll(' ', '_')
+    let formattedMovie = newMovie.replaceAll(' ', '_')
 
-    getMovieInfosFromIMDB(formatedMovie)
+    getMovieInfosFromIMDB(formattedMovie)
 
     document.getElementById('input-movie').value = ''
     document.getElementById('input-movie').focus()
@@ -25,11 +33,11 @@ function addMovie() {
 }
 
 
-function getMovieInfosFromIMDB(movie) {
+function getMovieInfosFromIMDB(formattedMovie) {
 
-    const newMovieLength = 6 + movie.length
+    const newMovieLength = 6 + formattedMovie.length
 
-    fetch('https://api.allorigins.win/get?url=https://sg.media-imdb.com/suggests/' + movie[0].toLowerCase() + '/' + movie + '.json')
+    fetch('https://api.allorigins.win/get?url=https://sg.media-imdb.com/suggests/' + formattedMovie[0].toLowerCase() + '/' + formattedMovie + '.json')
         .then(response => response.json())
         .then(data => {
             const movieInfos = data.contents.substr(newMovieLength, data.contents.length - newMovieLength - 1)
@@ -40,31 +48,39 @@ function getMovieInfosFromIMDB(movie) {
 }
 
 
-function splitMovieInfos(movie) {
+function splitMovieInfos(movieInfos) {
 
-    const movieId = movie.d[0].id
-    const movieTitle = movie.d[0].l
-    const movieYear = movie.d[0].y
-    const moviePoster = movie.d[0].i[0]
+    let movie = {
+        id: movieInfos.d[0].id,
+        title: movieInfos.d[0].l,
+        year: movieInfos.d[0].y,
+        poster: movieInfos.d[0].i[0]
+    }
 
-    console.log(movie.d[0].id)
-    console.log(movie.d[0].l)
-    console.log(movie.d[0].y)
-    console.log(movie.d[0].i[0])
-
-    showMovies(moviePoster)
+    showMovies(movie)
 
 }
 
 
-function showMovies(poster) {
+function showMovies(movie) {
 
-    let hasMovie = movies.includes(poster)
+    let hasMovie = movies.includes(movie)
 
     if (!hasMovie) {
-        movies.push(poster)
+        movies.push(movie)
         updateLocalStorage()
-        listMovies.innerHTML += `<img src="${poster}">`
+
+        const movieContent = `
+            <div id="movie-content">
+                <a href="https://www.imdb.com/title/${movie.id}" target="_blank">
+                    <img src="${movie.poster}">
+                </a>
+                <h3>${movie.title}</h3>
+                <h4>${movie.year}</h4>
+            </div>
+        `
+        
+        listMovies.innerHTML += movieContent
     } else {
         alert('Esse filme já foi adicionado. Tente outro! :D')
     }
@@ -72,6 +88,7 @@ function showMovies(poster) {
 }
 
 /* TAREFAS
-1. Adicionar nome do filme e ano de lançamento abaixo do poster
-2. Ao clicar no poster, ser direcionado para a página do filme no site da IMDB
-3. Criar botão para remover o filme */
+1. [ ] Adicionar nome do filme e ano de lançamento abaixo do poster
+2. [ ] Quebrar o nome do filme caso ele seja muito grande
+3. [ ] Ao clicar no poster, ser direcionado para a página do filme no site da IMDB
+4. [ ] Criar botão para remover o filme */
