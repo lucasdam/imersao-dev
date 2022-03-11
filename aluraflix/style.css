@@ -49,14 +49,14 @@ input {
 }
 
 button {
-  padding: 0.6rem 3rem;
+  padding: 0.6rem 2rem;
   border-radius: 0.25rem;
   background: #4CAF50;
   color: #FFFFFF;
   cursor: pointer;
   font-weight: bold;
   border: none;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   margin-bottom: 3rem;
 }
 

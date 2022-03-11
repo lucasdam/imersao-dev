@@ -1,40 +1,23 @@
-const initialMovies = [
-    'https://br.web.img2.acsta.net/pictures/19/07/23/20/57/4907896.jpg', 
-    'https://moviesense.files.wordpress.com/2020/03/05147-arrival1.jpg', 
-    'https://br.web.img3.acsta.net/medias/nmedia/18/91/90/98/20169244.jpg',
-]
-
-let newMovie = ''
-let moviePoster = ''
-let listMovies = document.getElementById('list-movies')
-
 const localStorageMovies = JSON.parse(localStorage.getItem('aluraflix'))
-let movies = localStorage.getItem('aluraflix') !== null ? localStorageMovies : initialMovies
+let movies = localStorage.getItem('aluraflix') !== null ? localStorageMovies : []
 
 const updateLocalStorage = () => {
     localStorage.setItem('aluraflix', JSON.stringify(movies))
 }
+
+let listMovies = document.getElementById('list-movies')
 
 for (let movie of movies) {
     listMovies.innerHTML += `<img src="${movie}">`
 }
 
 
-async function addMovie() {
+function addMovie() {
 
-    newMovie = document.getElementById('input-movie').value
+    let newMovie = document.getElementById('input-movie').value
+    let formatedMovie = newMovie.replaceAll(' ', '_')
 
-    await getMovieInfos()
-
-    let hasMovie = movies.includes(moviePoster)
-    
-    if (!hasMovie) {
-        movies.push(moviePoster)
-        updateLocalStorage()
-        listMovies.innerHTML += `<img src="${moviePoster}">`
-    } else {
-        alert('Essa capa já foi adicionada. Tente outra!')
-    }
+    getMovieInfosFromIMDB(formatedMovie)
 
     document.getElementById('input-movie').value = ''
     document.getElementById('input-movie').focus()
@@ -42,38 +25,53 @@ async function addMovie() {
 }
 
 
-async function getMovieInfos() {
+function getMovieInfosFromIMDB(movie) {
 
-    let movieFormated = newMovie.replaceAll(' ', '%20')
+    const newMovieLength = 6 + movie.length
 
-    await fetch(`https://imdb-data-searching.p.rapidapi.com/om?t=${movieFormated}`, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "imdb-data-searching.p.rapidapi.com",
-		"x-rapidapi-key": "6b049fd902msh11b57c5ebb6ac4bp190938jsn2e0d04b84102"
-	}
-    })
-    .then(response => response.json())
-    .then(data => {
-        moviePoster = data.Poster
-    })
-    .catch(err => {
-        console.error(err);
-    });
+    fetch('https://api.allorigins.win/get?url=https://sg.media-imdb.com/suggests/' + movie[0].toLowerCase() + '/' + movie + '.json')
+        .then(response => response.json())
+        .then(data => {
+            const movieInfos = data.contents.substr(newMovieLength, data.contents.length - newMovieLength - 1)
+
+            splitMovieInfos(JSON.parse(movieInfos))
+        })
 
 }
 
 
+function splitMovieInfos(movie) {
 
-/*
+    const movieId = movie.d[0].id
+    const movieTitle = movie.d[0].l
+    const movieYear = movie.d[0].y
+    const moviePoster = movie.d[0].i[0]
 
-TAREFAS:
+    console.log(movie.d[0].id)
+    console.log(movie.d[0].l)
+    console.log(movie.d[0].y)
+    console.log(movie.d[0].i[0])
 
-1. Abaixo do poster, apresentar o nome do filme e ano de lançamento, gênero e sinopse
-2. Usar outra API que permita fazer a busca do filme pelo título em português também, não só inglês
-3. Se possível (dependendo da API), fazer com que ao clicar no poster, o usuário seja direcionado a página do IMDB
-4. Realmente trocar essa API pois ela só deixa fazer 50 requisições por mês
+    showMovies(moviePoster)
 
-oldkey: 524ef02908msh7bf0426979dca94p1b3e94jsn80282e9d9859
+}
 
-*/
+
+function showMovies(poster) {
+
+    let hasMovie = movies.includes(poster)
+
+    if (!hasMovie) {
+        movies.push(poster)
+        updateLocalStorage()
+        listMovies.innerHTML += `<img src="${poster}">`
+    } else {
+        alert('Esse filme já foi adicionado. Tente outro! :D')
+    }
+
+}
+
+/* TAREFAS
+1. Adicionar nome do filme e ano de lançamento abaixo do poster
+2. Ao clicar no poster, ser direcionado para a página do filme no site da IMDB
+3. Criar botão para remover o filme */
