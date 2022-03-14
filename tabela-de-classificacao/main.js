@@ -1,66 +1,73 @@
-let rafa = { name: 'Rafa', wins: 2, ties: 1, losses: 1, scores: 0 }
-let paulo = { name: 'Paulo', wins: 1, ties: 1, losses: 2, scores: 0 }
-let gui = { name: 'Gui', wins: 1, ties: 1, losses: 2, scores: 0 }
-
-function calculateScores(player) {
-    let scores = (player.wins * 3) + player.ties
-    return scores
+const Player = class {
+    constructor(playerName, wins, ties,losses, scores) {
+        this.playerName = playerName
+        this.wins = wins
+        this.ties = ties
+        this.losses = losses
+        this.scores = scores
+    }
 }
 
-rafa.scores = calculateScores(rafa)
-paulo.scores = calculateScores(paulo)
-gui.scores = calculateScores(gui)
+let players = []
 
-let players = [rafa, paulo, gui]
+function addPlayer() {
+    const newPlayer = document.getElementById('input-player').value
+    const player = new Player(newPlayer, 0, 0, 0, 0)
+    document.getElementById('input-player').value = ''
+    players.push(player)
+    player.scores = calculateScores(player)
+    showPlayers()
+}
 
-function showPlayersAtViewPort(players) {
+function calculateScores(player) {
+    return player.wins * 3 + player.ties
+}
+
+function showPlayers() {
+    const playersTable = document.getElementById('players-table')
     let element = ''
 
     for (let i = 0; i < players.length; i++) {
         element += `
-        <tr>
-            <td>${players[i].name}</td>
-            <td>${players[i].wins}</td>
-            <td>${players[i].ties}</td>
-            <td>${players[i].losses}</td>
-            <td>${players[i].scores}</td>
-            <td><button onClick="addWin(${i})">Vitória</button></td>
-            <td><button onClick="addTie(${i})">Empate</button></td>
-            <td><button onClick="addLoss(${i})">Derrota</button></td>
-        </tr>
-    `
+            <tr>
+                <td>${players[i].playerName}</td>
+                <td>${players[i].wins}</td>
+                <td>${players[i].ties}</td>
+                <td>${players[i].losses}</td>
+                <td>${players[i].scores}</td>
+                <td><button onClick="addWin(${i})">Vitória</button></td>
+                <td><button onClick="addTie(${i})">Empate</button></td>
+                <td><button onClick="addLoss(${i})">Derrota</button></td>
+            </tr>
+        `
     }
 
-    let playersTable = document.getElementById('players-table')
     playersTable.innerHTML = element
 }
 
-showPlayersAtViewPort(players)
-
 function addWin(i) {
-    let player = players[i]
+    const player = players[i]
     player.wins++
-    player.scores = calculateScores(player)
-    showPlayersAtViewPort(players)
+    players[i].scores = calculateScores(player)
+    showPlayers(players)
 }
 
 function addTie(i) {
-    let player = players[i]
+    const player = players[i]
     player.ties++
-    player.scores = calculateScores(player)
-    showPlayersAtViewPort(players)
+    players[i].scores = calculateScores(player)
+    showPlayers(players)
 }
 
 function addLoss(i) {
-    let player = players[i]
+    const player = players[i]
     player.losses++
-    showPlayersAtViewPort(players)
+    showPlayers(players)
 }
-
-
 
 /* DESAFIOS
 1. [ ] Quando houver um empate, ajustar como empate para todos os jogadores
 2. [ ] Adicionar a imagem de cada jogador
 3. [ ] Criar um botão para zerar todos os pontos
-4. [ ] Criar um botão e inputs para adicionar novos jogadores */
+4. [X] Criar um botão e inputs para adicionar novos jogadores 
+5. [ ] Armazenar os dados no localStorage */
