@@ -16,6 +16,8 @@
     <input type="text" id="input-player" placeholder="Adicione um novo jogador: ">
     <button type="submit" onclick="addPlayer()">Adicionar</button>
 
+    <button type="submit" onclick="resetScore()">Apagar pontuação</button>
+
     <table style="width:100%">
         <thead>
             <tr>
@@ -25,6 +27,7 @@
                 <th>Derrotas</th>
                 <th>Pontos</th>
                 <th colspan="3">Ações</th>
+                <th>Excluir</th>
             </tr>
         </thead>
         <tbody id="players-table">
