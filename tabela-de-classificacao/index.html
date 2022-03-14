@@ -11,14 +11,17 @@
 
 <body>
 
-    <h1>Tabela de classificação</h1>
+    <a href="https://alura.com.br/" target="_blank">
+        <img class="alura-logo" src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="Logo Alura">
+    </a>
 
-    <input type="text" id="input-player" placeholder="Adicione um novo jogador: ">
-    <button type="submit" onclick="addPlayer()">Adicionar</button>
+    <h1 class="page-title">Tabela de classificação</h1>
 
-    <button type="submit" onclick="resetScore()">Apagar pontuação</button>
+    <label for="input-player">Novo jogador: </label>
+    <input type="text" id="input-player" placeholder="Nome do jogador">
+    <button class="btn-add" type="submit" onclick="addPlayer()">ADICIONAR</button>
 
-    <table style="width:100%">
+    <table>
         <thead>
             <tr>
                 <th>Nome</th>
@@ -30,29 +33,12 @@
                 <th>Excluir</th>
             </tr>
         </thead>
-        <tbody id="players-table">
-            <!-- <tr>
-                <td>Paulo</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button onClick="addWin()">Vitória</button></td>
-                <td><button onClick="addLoss()">Empate</button></td>
-                <td><button onClick="addTie()">Derrota</button></td>
-            </tr>
-            <tr>
-                <td>Rafa</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button onClick="addWin()">Vitória</button></td>
-                <td><button onClick="addLoss()">Empate</button></td>
-                <td><button onClick="addTie()">Derrota</button></td>
-            </tr> -->
-        </tbody>
+        <tbody id="players-table"></tbody>
     </table>
+
+    <button class="btn-delete" type="submit" onclick="resetScore()">APAGAR PONTUAÇÃO</button> <br>
+
+    <img class="page-logo" src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-conversor-de-moedas.svg" alt="Logo Imersão Dev">
 
     <script src="main.js"></script>
 

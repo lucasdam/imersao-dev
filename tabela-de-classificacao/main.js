@@ -43,10 +43,10 @@ function showPlayers() {
                 <td>${players[i].ties}</td>
                 <td>${players[i].losses}</td>
                 <td>${players[i].scores}</td>
-                <td><button onClick="addWin(${i})">Vitória</button></td>
-                <td><button onClick="addTie(${i})">Empate</button></td>
-                <td><button onClick="addLoss(${i})">Derrota</button></td>
-                <td><button onClick="deletePlayer(${i})">X</button></td>
+                <td><button class="btn-actions" onClick="addWin(${i})">Vitória</button></td>
+                <td><button class="btn-actions" onClick="addTie(${i})">Empate</button></td>
+                <td><button class="btn-actions" onClick="addLoss(${i})">Derrota</button></td>
+                <td><button class="btn-actions-delete" onClick="deletePlayer(${i})">X</button></td>
             </tr>
         `
     }
@@ -95,11 +95,3 @@ function deletePlayer(i) {
     updateLocalStorage()
     showPlayers()
 }
-
-/* DESAFIOS
-1. [ ] Quando houver um empate, ajustar como empate para todos os jogadores
-2. [ ] Adicionar a imagem de cada jogador
-3. [X] Criar um botão para zerar todos os pontos
-4. [X] Criar um botão e inputs para adicionar novos jogadores 
-5. [X] Armazenar os dados no localStorage 
-6. [X] Remover jogador da tabela */

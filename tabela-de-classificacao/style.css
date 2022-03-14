@@ -19,8 +19,8 @@ body {
 }
 
 .page-title {
-    color: #ffffff;
-    margin: 0 0 5px;
+    color: #FFFFFF;
+    margin: 2rem;
 }
 
 .page-subtitle {
@@ -30,6 +30,7 @@ body {
 
 .page-logo {
     width: 200px;
+    margin-top: 1rem;
 }
 
 .alura-logo {
@@ -39,16 +40,59 @@ body {
     right: 10px;
 }
 
+label {
+    color: #FFFFFF;
+}
+
+input, button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+}
+
+button {
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-add {
+    background: #4CAF50;
+}
+
+.btn-delete {
+    background: #F44336;
+    display: flex;
+    font-size: 0.65rem;
+}
+
+.btn-actions {
+    background: #e7e7e7;
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem 0;
+}
+
+.btn-actions-delete {
+    background: #F44336;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0;
+    border-radius: 50%;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
 table {
     border: 2px solid white;
     border-collapse: collapse;
-}
-
-h1 {
-    color: white;
+    width: 100%;
+    margin: 2rem 0 1rem;
 }
 
 th, tr, td {
     border: solid 1px white;
     color: white;
+    margin: 5rem;
 }
