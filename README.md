@@ -6,12 +6,13 @@ Os desafios estão hospedados no GitHub Pages.
 <br /> <br />
 
 ### 💻 Projetos:
-- <a href="https://lucasdam.github.io/imersao-dev/tabela-de-classificacao/">Tabela de Classificação</a>
-- <a href="https://lucasdam.github.io/imersao-dev/aluraflix/">AluraFlix</a>
-- <a href="https://lucasdam.github.io/imersao-dev/mentalista/">Mentalista</a>
-- <a href="https://lucasdam.github.io/imersao-dev/conversor-de-moedas/">Conversor de Moedas</a>
-- <a href="https://lucasdam.github.io/imersao-dev/conversor-estelar/">Conversor de KM para Anos Luz</a>
-- <a href="https://lucasdam.github.io/imersao-dev/calculadora-de-media/">Calculadora de Média</a>
+- <a href="https://lucasdam.github.io/imersao-dev/super-trunfo/" target="_blank">Super Trunfo</a>
+- <a href="https://lucasdam.github.io/imersao-dev/tabela-de-classificacao/" target="_blank">Tabela de Classificação</a>
+- <a href="https://lucasdam.github.io/imersao-dev/aluraflix/" target="_blank">AluraFlix</a>
+- <a href="https://lucasdam.github.io/imersao-dev/mentalista/" target="_blank">Mentalista</a>
+- <a href="https://lucasdam.github.io/imersao-dev/conversor-de-moedas/" target="_blank">Conversor de Moedas</a>
+- <a href="https://lucasdam.github.io/imersao-dev/conversor-estelar/" target="_blank">Conversor de KM para Anos Luz</a>
+- <a href="https://lucasdam.github.io/imersao-dev/calculadora-de-media/" target="_blank">Calculadora de Média</a>
 <br /> <br />
 
 ### 🎯 Objetivo:
