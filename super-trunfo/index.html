@@ -18,8 +18,25 @@
 
         <form id="form">
             <h2>Escolha o seu atributo</h2>
-            <div class="opcoes" id="options"></div>
-            <button type="button" id="btn-play" onclick="play()" disabled="false">Jogar</button>
+            <div class="options" id="options"></div>
+
+            <div class="wrapper">
+                <div>
+                    <div id="card-player">
+                        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
+                            style=" width: inherit; height: inherit; position: absolute;">
+                        <h3></h3>
+                    </div> 
+                </div>
+                <div>
+                    <div id="card-bot" class="card"><img
+                            src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
+                            style=" width: inherit; height: inherit; position: absolute;"></div>
+                </div>
+            </div>
+
+            <button class="btn-play" type="button" id="btn-play" onclick="play()" disabled="false">Jogar</button>
+
             <div id="result"></div> 
         </form>
     </div>
