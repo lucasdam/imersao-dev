@@ -69,6 +69,7 @@ body {
     list-style: none;
     font-weight: 700;
     font-size: 2.25rem;
+    
     list-style-position: inside;
     columns: 2;
 }
